@@ -55,11 +55,11 @@
   ctx)
 
 (defn stroke-style [ctx color]
-  (set! (-.strokeStyle ctx) color)
+  (set! (.-strokeStyle ctx) color)
   ctx)
 
 (defn stroke-width [ctx w]
-  (set! (-.lineWidth ctx) w)
+  (set! (.-lineWidth ctx) w)
   ctx)
 
 (defn move-to [ctx x y]
@@ -71,7 +71,7 @@
   ctx)
 
 (defn alpha [ctx a]
-  (set! (-.globalAlpha ctx) a)
+  (set! (.-globalAlpha ctx) a)
   ctx)
 
 (defn save [ctx]
