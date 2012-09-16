@@ -47,19 +47,19 @@
   ctx)
 
 (defn font-style [ctx font]
-  (set! ctx.font font)
+  (set! (.-font ctx) font)
   ctx)
 
 (defn fill-style [ctx color]
-  (set! ctx.fillStyle color)
+  (set! (.-fillStyle ctx) color)
   ctx)
 
 (defn stroke-style [ctx color]
-  (set! ctx.strokeStyle color)
+  (set! (-.strokeStyle ctx) color)
   ctx)
 
 (defn stroke-width [ctx w]
-  (set! ctx.lineWidth w)
+  (set! (-.lineWidth ctx) w)
   ctx)
 
 (defn move-to [ctx x y]
@@ -71,7 +71,7 @@
   ctx)
 
 (defn alpha [ctx a]
-  (set! ctx.globalAlpha a)
+  (set! (-.globalAlpha ctx) a)
   ctx)
 
 (defn save [ctx]
