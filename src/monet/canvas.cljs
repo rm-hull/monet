@@ -158,5 +158,5 @@
 (defn start-updating [mc] (reset! (:updating? mc) true))
 (defn restart [mc] 
   (reset! (:active mc) true)
-  (update-loop mc)
+  ;;(update-loop mc)
   (draw-loop mc))
