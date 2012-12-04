@@ -62,6 +62,10 @@
   (set! (.-lineWidth ctx) w)
   ctx)
 
+(defn stroke-cap [ctx w]
+  (set! (.-lineCap ctx) w)
+  ctx)
+
 (defn move-to [ctx x y]
   (. ctx (moveTo x y))
   ctx)
