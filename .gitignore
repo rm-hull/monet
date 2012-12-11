@@ -3,3 +3,6 @@ pom.xml
 /lib/
 /classes/
 .lein-deps-sum
+.lein-cljsbuild-compiler-0/
+.lein-plugins/checksum
+main.js
