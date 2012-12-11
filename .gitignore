@@ -2,4 +2,6 @@ pom.xml
 *jar
 /lib/
 /classes/
+/target/
+.AppleDouble/
 .lein-deps-sum
