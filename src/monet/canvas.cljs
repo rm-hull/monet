@@ -74,6 +74,14 @@
   (set! ctx.globalAlpha a)
   ctx)
 
+(defn text-align [ctx alignment]
+  (set! (.-textAlign ctx) alignment)
+  ctx)
+
+(defn text-baseline [ctx alignment]
+  (set! (.-textBaseline ctx) alignment)
+  ctx)
+
 (defn save [ctx]
   (. ctx (save))
   ctx)
