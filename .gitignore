@@ -6,3 +6,4 @@ pom.xml
 .lein-cljsbuild-compiler-0/
 .lein-plugins/checksum
 main.js
+target/
