@@ -106,6 +106,25 @@
      (. ctx (drawImage img x y w h))
      ctx))
 
+(defn quadratic-curve-to [ctx bx by x y]
+  (. ctx (quadraticCurveTo bx by x y))
+  ctx)
+
+(defn rounded-rect [ctx {:keys [x y w h r]}]
+  "Stroke a rectable with rounded corners of radius r pixels."
+  (-> ctx
+      begin-path
+      (move-to x (+ y r))
+      (line-to x (- (+ y h) r))
+      (quadratic-curve-to x (+ y h) (+ x r) (+ y h))
+      (line-to (- (+ x w) r) (+ y h))
+      (quadratic-curve-to (+ x w) (+ y h) (+ x w) (- (+ y h) r))
+      (line-to (+ x w) (+ y r))
+      (quadratic-curve-to (+ x w) y (- (+ x w) r) y)
+      (line-to (+ x r) y)
+      (quadratic-curve-to x y x (+ y r))
+      stroke))
+
 ;;*********************************************
 ;; Canvas Entities
 ;;*********************************************
