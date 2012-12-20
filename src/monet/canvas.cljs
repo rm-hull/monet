@@ -78,6 +78,15 @@
   (set! (.-globalAlpha ctx) a)
   ctx)
 
+(defn get-pixel 
+  "Gets the pixel value as an int in RGBA format" 
+  [ctx x y]
+  (let [imgd (.-data (.getImageData ctx x y 1 1))]
+      (+ (* (aget imgd 0) 1677216)
+         (* (aget imgd 1) 65536)
+         (* (aget imgd 2) 256)
+         (* (aget imgd 3) 1))))
+
 (defn save [ctx]
   (. ctx (save))
   ctx)
