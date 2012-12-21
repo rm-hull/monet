@@ -79,13 +79,13 @@
   ctx)
 
 (defn get-pixel 
-  "Gets the pixel value as an int in RGBA format" 
+  "Gets the pixel value as a hash map of RGBA values" 
   [ctx x y]
   (let [imgd (.-data (.getImageData ctx x y 1 1))]
-      (+ (* (aget imgd 0) 1677216)
-         (* (aget imgd 1) 65536)
-         (* (aget imgd 2) 256)
-         (* (aget imgd 3) 1))))
+      { :red   (aget imgd 0) 
+        :green (aget imgd 1) 
+        :blue  (aget imgd 2) 
+        :alpha (aget imgd 3)}))
 
 (defn save [ctx]
   (. ctx (save))
