@@ -98,6 +98,10 @@
   (. ctx (scale sx sy))
   ctx)
 
+(defn translate [ctx tx ty]
+  (. ctx (translate tx ty))
+  ctx)
+
 (defn draw-image
   ([ctx img x y]
      (. ctx (drawImage img x y))
