@@ -35,6 +35,10 @@
   (fill ctx)
   ctx)
 
+(defn stroke-rect [ctx {:keys [x y w h]}]
+  (. ctx (strokeRect x y w h))
+  ctx)
+
 (defn circle [ctx {:keys [x y r]}]
   (begin-path ctx)
   (. ctx (arc x y r 0 (* (.-PI js/Math) 2) true))
@@ -78,6 +82,14 @@
   (set! (.-globalAlpha ctx) a)
   ctx)
 
+(defn text-align [ctx alignment]
+  (set! (.-textAlign ctx) alignment)
+  ctx)
+
+(defn text-baseline [ctx alignment]
+  (set! (.-textBaseline ctx) alignment)
+  ctx)
+
 (defn get-pixel 
   "Gets the pixel value as a hash map of RGBA values" 
   [ctx x y]
@@ -94,6 +106,41 @@
 (defn restore [ctx]
   (. ctx (restore))
   ctx)
+
+(defn scale [ctx sx sy]
+  (. ctx (scale sx sy))
+  ctx)
+
+(defn translate [ctx tx ty]
+  (. ctx (translate tx ty))
+  ctx)
+
+(defn draw-image
+  ([ctx img x y]
+     (. ctx (drawImage img x y))
+     ctx)
+  ([ctx img {:keys [x y w h]}]
+     (. ctx (drawImage img x y w h))
+     ctx))
+
+(defn quadratic-curve-to [ctx bx by x y]
+  (. ctx (quadraticCurveTo bx by x y))
+  ctx)
+
+(defn rounded-rect [ctx {:keys [x y w h r]}]
+  "Stroke a rectable with rounded corners of radius r pixels."
+  (-> ctx
+      begin-path
+      (move-to x (+ y r))
+      (line-to x (- (+ y h) r))
+      (quadratic-curve-to x (+ y h) (+ x r) (+ y h))
+      (line-to (- (+ x w) r) (+ y h))
+      (quadratic-curve-to (+ x w) (+ y h) (+ x w) (- (+ y h) r))
+      (line-to (+ x w) (+ y r))
+      (quadratic-curve-to (+ x w) y (- (+ x w) r) y)
+      (line-to (+ x r) y)
+      (quadratic-curve-to x y x (+ y r))
+      stroke))
 
 ;;*********************************************
 ;; Canvas Entities

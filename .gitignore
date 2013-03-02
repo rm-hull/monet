@@ -2,6 +2,8 @@ pom.xml
 *jar
 /lib/
 /classes/
-/target/
-.AppleDouble/
 .lein-deps-sum
+.lein-cljsbuild-compiler-0/
+.lein-plugins/checksum
+main.js
+target/
