@@ -55,19 +55,19 @@
   ctx)
 
 (defn fill-style [ctx color]
-  (set! (.-fillStyle ctx) color)
+  (set! (.-fillStyle ctx) (name color))
   ctx)
 
 (defn stroke-style [ctx color]
-  (set! (.-strokeStyle ctx) color)
+  (set! (.-strokeStyle ctx) (name color))
   ctx)
 
 (defn stroke-width [ctx w]
   (set! (.-lineWidth ctx) w)
   ctx)
 
-(defn stroke-cap [ctx w]
-  (set! (.-lineCap ctx) w)
+(defn stroke-cap [ctx cap]
+  (set! (.-lineCap ctx) (name cap))
   ctx)
 
 (defn move-to [ctx x y]
@@ -83,11 +83,11 @@
   ctx)
 
 (defn text-align [ctx alignment]
-  (set! (.-textAlign ctx) alignment)
+  (set! (.-textAlign ctx) (name alignment))
   ctx)
 
 (defn text-baseline [ctx alignment]
-  (set! (.-textBaseline ctx) alignment)
+  (set! (.-textBaseline ctx) (name alignment))
   ctx)
 
 (defn get-pixel 
