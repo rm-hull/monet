@@ -115,6 +115,17 @@
   (. ctx (translate tx ty))
   ctx)
 
+(defn transform 
+  "Applies a custom transformation matrix to the HTML5 canvas 
+   according to the follow convention:
+  
+   [ x']   [ a c e ] [ x ]
+   [ y'] = [ b d f ] [ y ]
+   [ 1 ]   [ 0 0 1 ] [ 1 ]"
+  [ctx a b c d e f]
+  (. ctx (transform a b c d e f))
+  ctx)
+
 (defn draw-image
   ([ctx img x y]
      (. ctx (drawImage img x y))
