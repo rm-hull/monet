@@ -151,7 +151,8 @@
       (quadratic-curve-to (+ x w) y (- (+ x w) r) y)
       (line-to (+ x r) y)
       (quadratic-curve-to x y x (+ y r))
-      stroke))
+      stroke)
+  ctx)
 
 ;;*********************************************
 ;; Canvas Entities
