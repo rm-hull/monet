@@ -116,8 +116,8 @@
   ctx)
 
 (defn transform 
-  "Applies a custom transformation matrix to the HTML5 canvas 
-   according to the follow convention:
+  "Multiplies a custom transformation matrix to the existing
+   HTML5 canvas transformation according to the follow convention:
   
    [ x']   [ a c e ] [ x ]
    [ y'] = [ b d f ] [ y ]
