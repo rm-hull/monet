@@ -39,6 +39,10 @@
   (. ctx (strokeRect x y w h))
   ctx)
 
+(defn fill-rect [ctx {:keys [x y w h]}]
+  (. ctx (fillRect x y w h))
+  ctx)
+
 (defn circle [ctx {:keys [x y r]}]
   (begin-path ctx)
   (. ctx (arc x y r 0 (* (.-PI js/Math) 2) true))

@@ -1,10 +1,17 @@
 Changelog
 =========
 
-0.1.6-SNAPSHOT
---------------
+0.1.7
+-----
+* Leiningen 2.1.x reliance
+* Deprecated monet.canvas/rect (replaced with fill-rect)
+* Added rotate, bezier-curve-to, composite-operation threading functions
+
+0.1.6
+-----
 * Added wrapper function for canvas matrix transformation
 * Small bug fix - methods should return context
+* Moved away from snapshot builds
 
 0.1.5-SNAPSHOT
 --------------
