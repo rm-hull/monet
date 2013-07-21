@@ -1,11 +1,15 @@
 Changelog
 =========
 
+0.1.8
+-----
+* Updated clojurescript version
+* Added rotate, bezier-curve-to threading functions
+
 0.1.7
 -----
 * Leiningen 2.1.x reliance
 * Deprecated monet.canvas/rect (replaced with fill-rect)
-* Added rotate, bezier-curve-to, composite-operation threading functions
 
 0.1.6
 -----

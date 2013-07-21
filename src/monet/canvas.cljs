@@ -28,7 +28,7 @@
   (. ctx (clearRect x y w h))
   ctx)
 
-(defn rect [ctx {:keys [x y w h]}]
+(defn rect "DEPRECATED. Prefer fill-rect" [ctx {:keys [x y w h]}]
   (begin-path ctx)
   (. ctx (rect x y w h))
   (close-path ctx)
@@ -86,6 +86,10 @@
   (set! (.-globalAlpha ctx) a)
   ctx)
 
+(defn composition-operation [ctx operation]
+  (set! (.-globalCompositionOperation ctx) (name operation))
+  ctx)
+
 (defn text-align [ctx alignment]
   (set! (.-textAlign ctx) (name alignment))
   ctx)
@@ -111,24 +115,31 @@
   (. ctx (restore))
   ctx)
 
-(defn scale [ctx sx sy]
-  (. ctx (scale sx sy))
+(defn rotate [ctx angle]
+  (. ctx (rotate angle))
   ctx)
 
-(defn translate [ctx tx ty]
-  (. ctx (translate tx ty))
+(defn scale [ctx x y]
+  (. ctx (scale x y))
+  ctx)
+
+(defn translate [ctx x y]
+  (. ctx (translate x y))
   ctx)
 
 (defn transform 
   "Multiplies a custom transformation matrix to the existing
    HTML5 canvas transformation according to the follow convention:
   
-   [ x']   [ a c e ] [ x ]
-   [ y'] = [ b d f ] [ y ]
-   [ 1 ]   [ 0 0 1 ] [ 1 ]"
-  [ctx a b c d e f]
-  (. ctx (transform a b c d e f))
-  ctx)
+   [ x']   [ m11 m21 dx ] [ x ]
+   [ y'] = [ m12 m22 dy ] [ y ]
+   [ 1 ]   [ 0   0   1  ] [ 1 ]"
+  ([ctx m11 m12 m21 m22 dx dy]
+    (. ctx (transform m11 m12 m21 m22 dx dy))
+    ctx)
+  ([ctx {:keys [m11 m12 m21 m22 dx dy]}]
+    (. ctx (transform m11 m12 m21 m22 dx dy))
+    ctx))
 
 (defn draw-image
   ([ctx img x y]
@@ -138,9 +149,21 @@
      (. ctx (drawImage img x y w h))
      ctx))
 
-(defn quadratic-curve-to [ctx bx by x y]
-  (. ctx (quadraticCurveTo bx by x y))
-  ctx)
+(defn quadratic-curve-to 
+  ([ctx cpx cpy x y]
+    (. ctx (quadraticCurveTo cpx cpy x y))
+    ctx)
+  ([ctx {:keys [cpx cpy x y]}]
+    (. ctx (quadraticCurveTo cpx cpy x y))
+    ctx))
+
+(defn bezier-curve-to 
+  ([ctx cp1x cp1y cp2x cp2y x y]
+    (. ctx (bezierCurveTo cp1x cp1y cp2x cp2y x y))
+    ctx)
+  ([ctx {:keys [cp1x cp1y cp2x cp2y x y]}]
+    (. ctx (bezierCurveTo cp1x cp1y cp2x cp2y x y))
+    ctx))
 
 (defn rounded-rect [ctx {:keys [x y w h r]}]
   "Stroke a rectable with rounded corners of radius r pixels."
