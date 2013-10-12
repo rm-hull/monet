@@ -147,6 +147,9 @@
      ctx)
   ([ctx img {:keys [x y w h]}]
      (. ctx (drawImage img x y w h))
+     ctx)
+  ([ctx img {:keys [sx sy sw sh dx dy dw dh]}]
+     (. ctx (drawImage img sx sy sw sh dx dy dw dh))
      ctx))
 
 (defn quadratic-curve-to 
