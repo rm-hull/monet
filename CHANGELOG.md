@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.9-SNAPSHOT
+-----
+* Support the use of sprite sheets through sub-rectangle drawImage syntax (Matt Gauger)
+* Latest clojurescript (b1934) and lein-cljsbuild
+* Travis CI config
+
 0.1.8
 -----
 * Updated clojurescript version
