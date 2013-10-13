@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.9-SNAPSHOT
+0.1.9
 -----
 * Support the use of sprite sheets through sub-rectangle drawImage syntax (Matt Gauger)
 * Latest clojurescript (b1934) and lein-cljsbuild
