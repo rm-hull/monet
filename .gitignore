@@ -7,3 +7,5 @@ pom.xml*
 .lein-plugins/checksum
 main.js
 target/
+/.nrepl-port
+/.lein-repl-history
