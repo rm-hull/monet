@@ -98,13 +98,13 @@
   (set! (.-textBaseline ctx) (name alignment))
   ctx)
 
-(defn get-pixel 
-  "Gets the pixel value as a hash map of RGBA values" 
+(defn get-pixel
+  "Gets the pixel value as a hash map of RGBA values"
   [ctx x y]
   (let [imgd (.-data (.getImageData ctx x y 1 1))]
-      { :red   (aget imgd 0) 
-        :green (aget imgd 1) 
-        :blue  (aget imgd 2) 
+      { :red   (aget imgd 0)
+        :green (aget imgd 1)
+        :blue  (aget imgd 2)
         :alpha (aget imgd 3)}))
 
 (defn save [ctx]
@@ -127,10 +127,10 @@
   (. ctx (translate x y))
   ctx)
 
-(defn transform 
+(defn transform
   "Multiplies a custom transformation matrix to the existing
    HTML5 canvas transformation according to the follow convention:
-  
+
    [ x']   [ m11 m21 dx ] [ x ]
    [ y'] = [ m12 m22 dy ] [ y ]
    [ 1 ]   [ 0   0   1  ] [ 1 ]"
@@ -142,17 +142,21 @@
     ctx))
 
 (defn draw-image
+  "Draws the image onto the canvas at the given position.
+   If a map of params is given, the number of entries is used to
+   determine the underlying call to make."
   ([ctx img x y]
-     (. ctx (drawImage img x y))
-     ctx)
-  ([ctx img {:keys [x y w h]}]
-     (. ctx (drawImage img x y w h))
-     ctx)
-  ([ctx img {:keys [sx sy sw sh dx dy dw dh]}]
-     (. ctx (drawImage img sx sy sw sh dx dy dw dh))
-     ctx))
+    (. ctx (drawImage img x y))
+    ctx)
+  ([ctx img {:keys [x y w h
+                    sx sy sw sh dx dy dw dh] :as params}]
+    (condp = (count params)
+      2 (. ctx (drawImage img x y))
+      4 (. ctx (drawImage img x y w h))
+      8 (. ctx (drawImage img sx sy sw sh dx dy dw dh)))
+      ctx))
 
-(defn quadratic-curve-to 
+(defn quadratic-curve-to
   ([ctx cpx cpy x y]
     (. ctx (quadraticCurveTo cpx cpy x y))
     ctx)
@@ -160,7 +164,7 @@
     (. ctx (quadraticCurveTo cpx cpy x y))
     ctx))
 
-(defn bezier-curve-to 
+(defn bezier-curve-to
   ([ctx cp1x cp1y cp2x cp2y x y]
     (. ctx (bezierCurveTo cp1x cp1y cp2x cp2y x y))
     ctx)
@@ -169,7 +173,7 @@
     ctx))
 
 (defn rounded-rect [ctx {:keys [x y w h r]}]
-  "Stroke a rectable with rounded corners of radius r pixels."
+  "Stroke a rectangle with rounded corners of radius r pixels."
   (-> ctx
       begin-path
       (move-to x (+ y r))
@@ -232,7 +236,7 @@
                                 value)]
                 (when (aget entities k)
                   (aset entities k (assoc ent :value updated)))))
-            (when draw 
+            (when draw
               (try
                 (draw ctx (:value (aget entities k)))
                 (catch js/Error e
@@ -258,7 +262,7 @@
 (defn stop [mc] (reset! (:active mc) false))
 (defn stop-updating [mc] (reset! (:updating? mc) false))
 (defn start-updating [mc] (reset! (:updating? mc) true))
-(defn restart [mc] 
+(defn restart [mc]
   (reset! (:active mc) true)
   ;;(update-loop mc)
   (draw-loop mc))
