@@ -25,3 +25,7 @@ performant) to work with canvas and visuals.
 Copyright (C) 2011 Chris Granger
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rm-hull/monet/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
