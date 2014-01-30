@@ -3,6 +3,24 @@
 monet is a small ClojureScript library to make it easier (and
 performant) to work with canvas and visuals.
 
+### Including in your project
+
+There is a version hosted at [Clojars](https://clojars.org/rm-hull/monet).
+For leiningen include a dependency:
+
+```clojure
+[rm-hull/monet "0.1.10"]
+```
+
+For maven-based projects, add the following to your `pom.xml`:
+
+```xml
+<dependency>
+  <groupId>rm-hull</groupId>
+  <artifactId>monet</artifactId>
+  <version>0.1.10</version>
+</dependency>
+```
 ## Usage
 
 ```clojure

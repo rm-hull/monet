@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.10
+------
+* Updated clojurescript version (b2156) and lein-cljsbuild (1.0.1)
+* Updated README.md docs (@joakin)
+* Added clojars/pom section
+
 0.1.9
 -----
 * Support the use of sprite sheets through sub-rectangle drawImage syntax (Matt Gauger)
