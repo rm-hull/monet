@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.1.11
+------
+* Updated clojurescript version (b2202) and lein-cljsbuild (1.0.3)
+
 0.1.10
 ------
 * Updated clojurescript version (b2156) and lein-cljsbuild (1.0.1)
