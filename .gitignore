@@ -9,3 +9,4 @@ main.js
 target/
 /.nrepl-port
 /.lein-repl-history
+doc/api
