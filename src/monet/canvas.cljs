@@ -8,23 +8,37 @@
 (defn get-context [canvas type]
   (. canvas (getContext (name type))))
 
-(defn begin-path [ctx]
+(defn begin-path
+  "Starts a new path by resetting the list of sub-paths.
+   Call this method when you want to create a new path."
+  [ctx]
   (. ctx (beginPath))
   ctx)
 
-(defn close-path [ctx]
+(defn close-path
+  "Tries to draw a straight line from the current point to the start.
+   If the shape has already been closed or has only one point, this
+   function does nothing."
+  [ctx]
   (. ctx (closePath))
   ctx)
 
-(defn fill [ctx]
+(defn fill
+  "Fills the subpaths with the current fill style."
+  [ctx]
   (. ctx (fill))
   ctx)
 
-(defn stroke [ctx]
+(defn stroke
+  "Strokes the subpaths with the current stroke style."
+  [ctx]
   (. ctx (stroke))
   ctx)
 
-(defn clear-rect [ctx {:keys [x y w h]}]
+(defn clear-rect
+  "Sets all pixels in the rectangle defined by starting point (x, y)
+   and size (w, h) to transparent black."
+  [ctx {:keys [x y w h]}]
   (. ctx (clearRect x y w h))
   ctx)
 
@@ -35,66 +49,111 @@
   (fill ctx)
   ctx)
 
-(defn stroke-rect [ctx {:keys [x y w h]}]
+(defn stroke-rect
+  "Paints a rectangle which has a starting point at (x, y) and has a
+   w width and an h height onto the canvas, using the current stroke
+   style."
+  [ctx {:keys [x y w h]}]
   (. ctx (strokeRect x y w h))
   ctx)
 
-(defn fill-rect [ctx {:keys [x y w h]}]
+(defn fill-rect
+  "Draws a filled rectangle at (x, y) position whose size is determined
+   by width w and height h."
+  [ctx {:keys [x y w h]}]
   (. ctx (fillRect x y w h))
   ctx)
 
-(defn circle [ctx {:keys [x y r]}]
+(defn circle
+  "Draws a circle at position (x, y) with radius r"
+  [ctx {:keys [x y r]}]
   (begin-path ctx)
   (. ctx (arc x y r 0 (* (.-PI js/Math) 2) true))
   (close-path ctx)
   (fill ctx)
   ctx)
 
-(defn text [ctx {:keys [text x y]}]
+(defn text
+  "Paints the given text at a starting point at (x, y), using the
+   current stroke style."
+  [ctx {:keys [text x y]}]
   (. ctx (fillText text x y))
   ctx)
 
-(defn font-style [ctx font]
+(defn font-style
+  "Sets the font. Default value 10px sans-serif."
+  [ctx font]
   (set! (.-font ctx) font)
   ctx)
 
-(defn fill-style [ctx color]
+(defn fill-style
+  "Color or style to use inside shapes. Default #000 (black)."
+  [ctx color]
   (set! (.-fillStyle ctx) (name color))
   ctx)
 
-(defn stroke-style [ctx color]
+(defn stroke-style
+  "Color or style to use for the lines around shapes. Default #000 (black)."
+  [ctx color]
   (set! (.-strokeStyle ctx) (name color))
   ctx)
 
-(defn stroke-width [ctx w]
+(defn stroke-width
+  "Sets the line width. Default 1.0"
+  [ctx w]
   (set! (.-lineWidth ctx) w)
   ctx)
 
-(defn stroke-cap [ctx cap]
+(defn stroke-cap
+  "Sets the line cap. Possible values (as string or keyword):
+   butt (default), round, square"
+  [ctx cap]
   (set! (.-lineCap ctx) (name cap))
   ctx)
 
-(defn move-to [ctx x y]
+(defn move-to
+  "Moves the starting point of a new subpath to the (x, y) coordinates."
+  [ctx x y]
   (. ctx (moveTo x y))
   ctx)
 
-(defn line-to [ctx x y]
+(defn line-to
+  "Connects the last point in the subpath to the x, y coordinates with a
+   straight line."
+  [ctx x y]
   (. ctx (lineTo x y))
   ctx)
 
-(defn alpha [ctx a]
+(defn alpha
+  "Global Alpha value that is applied to shapes and images before they are
+   composited onto the canvas. Default 1.0 (opaque)."
+  [ctx a]
   (set! (.-globalAlpha ctx) a)
   ctx)
 
-(defn composition-operation [ctx operation]
+(defn composition-operation
+  "With Global Alpha applied this sets how shapes and images are drawn
+   onto the existing bitmap. Possible values (as string or keyword):
+   source-atop, source-in, source-out, source-over (default),
+   destination-atop, destination-in, destination-out, destination-over,
+   lighter, darker, copy, xor"
+  [ctx operation]
   (set! (.-globalCompositionOperation ctx) (name operation))
   ctx)
 
-(defn text-align [ctx alignment]
+(defn text-align
+  "Sets the text alignment attribute. Possible values (specified
+   as a string or keyword): start (default), end, left, right or
+   center."
+  [ctx alignment]
   (set! (.-textAlign ctx) (name alignment))
   ctx)
 
-(defn text-baseline [ctx alignment]
+(defn text-baseline
+  "Sets the text baseline attribute. Possible values (specified
+   as a string or keyword): top, hanging, middle, alphabetic (default),
+   ideographic, bottom"
+  [ctx alignment]
   (set! (.-textBaseline ctx) (name alignment))
   ctx)
 
@@ -107,23 +166,35 @@
         :blue  (aget imgd 2)
         :alpha (aget imgd 3)}))
 
-(defn save [ctx]
+(defn save
+  "Saves the current drawing style state using a stack so you can revert
+   any change you make to it using restore."
+  [ctx]
   (. ctx (save))
   ctx)
 
-(defn restore [ctx]
+(defn restore
+  "Restores the drawing style state to the last element on the 'state stack'
+   saved by save."
+  [ctx]
   (. ctx (restore))
   ctx)
 
-(defn rotate [ctx angle]
+(defn rotate
+  "Rotate the context "
+  [ctx angle]
   (. ctx (rotate angle))
   ctx)
 
-(defn scale [ctx x y]
+(defn scale
+  "Scales the context by a floating-point factor in each direction"
+  [ctx x y]
   (. ctx (scale x y))
   ctx)
 
-(defn translate [ctx x y]
+(defn translate
+  "Moves the origin point of the context to (x, y)."
+  [ctx x y]
   (. ctx (translate x y))
   ctx)
 
