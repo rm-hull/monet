@@ -1,5 +1,11 @@
 (ns monet.canvas
-  (:require [monet.core :as core]))
+  "The canvas namespace provides functions which can be used for
+   rendering graphs, game graphics, art, or othe visual images
+   on the fly.
+
+   See http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element"
+  (:require
+    [monet.core :as core]))
 
 ;;*********************************************
 ;; Canvas drawing functions
