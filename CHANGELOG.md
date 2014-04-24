@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.12
+------
+* Documentation - using CODOX
+* Updated clojure version (1.6.0)
+
 0.1.11
 ------
 * Updated clojurescript version (b2202) and lein-cljsbuild (1.0.3)
