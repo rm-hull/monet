@@ -48,7 +48,9 @@
   (. ctx (clearRect x y w h))
   ctx)
 
-(defn rect "DEPRECATED. Prefer fill-rect" [ctx {:keys [x y w h]}]
+(defn ^:deprecated rect
+  "DEPRECATED. Prefer fill-rect"
+  [ctx {:keys [x y w h]}]
   (begin-path ctx)
   (. ctx (rect x y w h))
   (close-path ctx)
