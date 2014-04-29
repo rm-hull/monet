@@ -27,7 +27,7 @@ For maven-based projects, add the following to your `pom.xml`:
 (ns game.core
   (:require [monet.canvas :as canvas])
 
-(def canvas-dom (.getElementById js/document "#canvas"))
+(def canvas-dom (.getElementById js/document "canvas"))
 
 (def monet-canvas (canvas/init canvas-dom "2d"))
 
