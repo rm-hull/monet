@@ -4,13 +4,14 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2202"]]
   :plugins [
-    [codox "0.6.7"]
+    [codox "0.8.5"]
     [lein-cljsbuild "1.0.3"]
   ]
   :source-path "no-clj-here"
   :cljsbuild {
     :builds [{:source-paths ["src"], :id "main", :jar true}]}
   :codox {
+    :language :clojurescript
     :sources ["src"]
     :output-dir "doc/api"
     :src-dir-uri "http://github.com/rm-hull/monet/blob/master/"
