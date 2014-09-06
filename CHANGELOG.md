@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.13
+------
+* Fixed issue #5: added `stroke-join` method
+* Updated leiningen version (2.4.2)
+
 0.1.12
 ------
 * Documentation - using CODOX

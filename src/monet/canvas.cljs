@@ -119,6 +119,13 @@
   (set! (.-lineCap ctx) (name cap))
   ctx)
 
+(defn stroke-join
+  "Can be set, to change the line join style. Possible values (as string
+   or keyword): bevel, round, and miter. Other values are ignored."
+  [ctx join]
+  (set! (.-lineJoin ctx) (name join))
+  ctx)
+
 (defn move-to
   "Moves the starting point of a new subpath to the (x, y) coordinates."
   [ctx x y]
