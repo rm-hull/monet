@@ -3,4 +3,3 @@ lein: lein2
 script: lein2 cljsbuild once
 jdk:
   - openjdk7
-  - openjdk6
