@@ -1,4 +1,4 @@
-# monet [![Build Status](https://secure.travis-ci.org/rm-hull/monet.png)](http://travis-ci.org/rm-hull/monet)
+# monet [![Build Status](https://travis-ci.org/rm-hull/monet.svg?branch=master)](http://travis-ci.org/rm-hull/monet)
 
 monet is a small ClojureScript library to make it easier (and
 performant) to work with canvas and visuals.
