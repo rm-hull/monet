@@ -48,15 +48,6 @@
   (. ctx (clearRect x y w h))
   ctx)
 
-(defn ^:deprecated rect
-  "DEPRECATED. Prefer fill-rect"
-  [ctx {:keys [x y w h]}]
-  (begin-path ctx)
-  (. ctx (rect x y w h))
-  (close-path ctx)
-  (fill ctx)
-  ctx)
-
 (defn stroke-rect
   "Paints a rectangle which has a starting point at (x, y) and has a
    w width and an h height onto the canvas, using the current stroke
