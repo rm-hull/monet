@@ -9,7 +9,7 @@ There is a version hosted at [Clojars](https://clojars.org/rm-hull/monet).
 For leiningen include a dependency:
 
 ```clojure
-[rm-hull/monet "0.2.0"]
+[rm-hull/monet "0.2.1"]
 ```
 
 For maven-based projects, add the following to your `pom.xml`:
@@ -18,7 +18,7 @@ For maven-based projects, add the following to your `pom.xml`:
 <dependency>
   <groupId>rm-hull</groupId>
   <artifactId>monet</artifactId>
-  <version>0.1.13</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 ## Usage
