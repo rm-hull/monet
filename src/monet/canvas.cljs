@@ -30,6 +30,52 @@
   (. ctx (closePath))
   ctx)
 
+(defn save
+  "Saves the current drawing style state using a stack so you can revert
+   any change you make to it using restore."
+  [ctx]
+  (. ctx (save))
+  ctx)
+
+(defn restore
+  "Restores the drawing style state to the last element on the 'state stack'
+   saved by save."
+  [ctx]
+  (. ctx (restore))
+  ctx)
+
+(defn rotate
+  "Rotate the context "
+  [ctx angle]
+  (. ctx (rotate angle))
+  ctx)
+
+(defn scale
+  "Scales the context by a floating-point factor in each direction"
+  [ctx x y]
+  (. ctx (scale x y))
+  ctx)
+
+(defn translate
+  "Moves the origin point of the context to (x, y)."
+  [ctx x y]
+  (. ctx (translate x y))
+  ctx)
+
+(defn transform
+  "Multiplies a custom transformation matrix to the existing
+   HTML5 canvas transformation according to the follow convention:
+
+   [ x']   [ m11 m21 dx ] [ x ]
+   [ y'] = [ m12 m22 dy ] [ y ]
+   [ 1 ]   [ 0   0   1  ] [ 1 ]"
+  ([ctx m11 m12 m21 m22 dx dy]
+    (. ctx (transform m11 m12 m21 m22 dx dy))
+    ctx)
+  ([ctx {:keys [m11 m12 m21 m22 dx dy]}]
+    (. ctx (transform m11 m12 m21 m22 dx dy))
+    ctx))
+
 (defn fill
   "Fills the subpaths with the current fill style."
   [ctx]
@@ -199,52 +245,6 @@
         :green (aget imgd 1)
         :blue  (aget imgd 2)
         :alpha (aget imgd 3)}))
-
-(defn save
-  "Saves the current drawing style state using a stack so you can revert
-   any change you make to it using restore."
-  [ctx]
-  (. ctx (save))
-  ctx)
-
-(defn restore
-  "Restores the drawing style state to the last element on the 'state stack'
-   saved by save."
-  [ctx]
-  (. ctx (restore))
-  ctx)
-
-(defn rotate
-  "Rotate the context "
-  [ctx angle]
-  (. ctx (rotate angle))
-  ctx)
-
-(defn scale
-  "Scales the context by a floating-point factor in each direction"
-  [ctx x y]
-  (. ctx (scale x y))
-  ctx)
-
-(defn translate
-  "Moves the origin point of the context to (x, y)."
-  [ctx x y]
-  (. ctx (translate x y))
-  ctx)
-
-(defn transform
-  "Multiplies a custom transformation matrix to the existing
-   HTML5 canvas transformation according to the follow convention:
-
-   [ x']   [ m11 m21 dx ] [ x ]
-   [ y'] = [ m12 m22 dy ] [ y ]
-   [ 1 ]   [ 0   0   1  ] [ 1 ]"
-  ([ctx m11 m12 m21 m22 dx dy]
-    (. ctx (transform m11 m12 m21 m22 dx dy))
-    ctx)
-  ([ctx {:keys [m11 m12 m21 m22 dx dy]}]
-    (. ctx (transform m11 m12 m21 m22 dx dy))
-    ctx))
 
 (defn draw-image
   "Draws the image onto the canvas at the given position.

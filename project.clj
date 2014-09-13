@@ -1,4 +1,4 @@
-(defproject rm-hull/monet "0.2.0"
+(defproject rm-hull/monet "0.2.1"
   :description "A ClojureScript visual library"
   :url "https://github.com/rm-hull/monet"
   :dependencies [[org.clojure/clojure "1.6.0"]

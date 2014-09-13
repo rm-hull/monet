@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2.1
+-----
+* Fix warnings about undeclared methods - fixes #7
+
 0.2.0
 -----
 * BREAKING CHANGE: removed deprecated `rect` method.
