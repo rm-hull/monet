@@ -3,7 +3,8 @@
    rendering graphs, game graphics, art, or othe visual images
    on the fly.
 
-   See http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element"
+   See http://www.w3.org/TR/html5/scripting-1.html#the-canvas-element and
+   http://www.w3.org/TR/2dcontext/"
   (:require
     [monet.core :as core]))
 
@@ -41,6 +42,12 @@
   (. ctx (stroke))
   ctx)
 
+(defn clip
+  "Further constrains the clipping region to the current path."
+  [ctx]
+  (. ctx (clip))
+  ctx)
+
 (defn clear-rect
   "Sets all pixels in the rectangle defined by starting point (x, y)
    and size (w, h) to transparent black."
@@ -63,14 +70,35 @@
   (. ctx (fillRect x y w h))
   ctx)
 
+(defn arc
+  "Draws an arc at position (x, y) with radius r, beginning at start-angle,
+   finishing at end-angle, in the direction specified."
+  [ctx {:keys [x y r start-angle end-angle counter-clockwise?]}]
+  (. ctx (arc x y r start-angle end-angle counter-clockwise?))
+  ctx)
+
+(def ^:private two-pi (* 2 Math/PI))
+
+(defn ellipse
+  "Draws an ellipse at position (x, y) with radius (rw, rh)"
+  [ctx {:keys [x y rw rh]}]
+  (->
+    ctx
+    (save)
+    (scale 1 (/ rh rw))
+    (begin-path)
+    (arc {:x x :y y :r rw :start-angle 0 :end-angle two-pi :counter-clockwise? false})
+    (close-path)
+    (restore)))
+
 (defn circle
   "Draws a circle at position (x, y) with radius r"
   [ctx {:keys [x y r]}]
-  (begin-path ctx)
-  (. ctx (arc x y r 0 (* (.-PI js/Math) 2) true))
-  (close-path ctx)
-  (fill ctx)
-  ctx)
+  (->
+    ctx
+    (begin-path)
+    (arc {:x x :y y :r r :start-angle 0 :end-angle two-pi :counter-clockwise? true})
+    (close-path)))
 
 (defn text
   "Paints the given text at a starting point at (x, y), using the
