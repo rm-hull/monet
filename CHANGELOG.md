@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.2.0
+-----
+* BREAKING CHANGE: removed deprecated `rect` method.
+* BREAKING CHANGE: `circle` now no longer strokes by default; it is
+  the callers responsibilty to call circle and then fill or stroke
+* Fixed issue #6: added `arc` and `ellipse` methods.
+* Added `clip` method to canvas.
+
 0.1.13
 ------
 * Fixed issue #5: added `stroke-join` method
