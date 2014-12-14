@@ -148,7 +148,7 @@
 
 (defn text
   "Paints the given text at a starting point at (x, y), using the
-   current stroke style."
+   current fill style."
   [ctx {:keys [text x y]}]
   (. ctx (fillText text x y))
   ctx)
