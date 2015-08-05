@@ -324,17 +324,20 @@
 (defn- attr [e a]
   (.getAttribute e a))
 
-(defn draw-loop [{:keys [canvas updating? ctx active entities] :as mc}]
+(defn draw-loop [{:keys [canvas updating? ctx active entities last-frame-time] :as mc}]
   (clear-rect ctx {:x 0 :y 0 :w (attr canvas "width") :h (attr canvas "height")})
   (when @active
     (let [ks (js-keys entities)
-          cnt (alength ks)]
+          cnt (alength ks)
+          now (js/Date.now)
+          dt (- now @last-frame-time)]
+      (reset! last-frame-time now)
       (loop [i 0]
         (when (< i cnt)
           (let [k (aget ks i)
                 {:keys [draw update value] :as ent} (aget entities k)]
             (when (and update @updating?)
-              (let [updated (or (try (update value)
+              (let [updated (or (try (update value dt)
                                   (catch js/Error e
                                     (.log js/console e)
                                     value))
@@ -354,6 +357,7 @@
         ctx (get-context elem ct)]
     {:canvas elem
      :ctx ctx
+     :last-frame-time (atom (js/Date.now))
      :entities (js-obj)
      :updating? (atom true)
      :active (atom true)}))
@@ -369,5 +373,6 @@
 (defn start-updating [mc] (reset! (:updating? mc) true))
 (defn restart [mc]
   (reset! (:active mc) true)
+  (reset! (:last-frame-time mc) (js/Date.now))
   ;;(update-loop mc)
   (draw-loop mc))
