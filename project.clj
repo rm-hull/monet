@@ -1,11 +1,11 @@
-(defproject rm-hull/monet "0.2.1"
+(defproject rm-hull/monet "0.2.2"
   :description "A ClojureScript visual library"
   :url "https://github.com/rm-hull/monet"
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2322"]]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.122"]]
   :plugins [
-    [codox "0.8.10"]
-    [lein-cljsbuild "1.0.3"]
+    [codox "0.8.13"]
+    [lein-cljsbuild "1.1.0"]
   ]
   :source-path "no-clj-here"
   :cljsbuild {

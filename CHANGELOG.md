@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.2
+-----
+* Bump dependent versions (-> clojurescript 1.7.122)
+* frame time (see https://github.com/rm-hull/monet/pull/11)
+
 0.2.1
 -----
 * Fix warnings about undeclared methods - fixes #7

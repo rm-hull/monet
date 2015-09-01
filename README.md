@@ -9,7 +9,7 @@ There is a version hosted at [Clojars](https://clojars.org/rm-hull/monet).
 For leiningen include a dependency:
 
 ```clojure
-[rm-hull/monet "0.2.1"]
+[rm-hull/monet "0.2.2"]
 ```
 
 For maven-based projects, add the following to your `pom.xml`:
@@ -18,7 +18,7 @@ For maven-based projects, add the following to your `pom.xml`:
 <dependency>
   <groupId>rm-hull</groupId>
   <artifactId>monet</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
 </dependency>
 ```
 ## Usage
@@ -44,11 +44,11 @@ For maven-based projects, add the following to your `pom.xml`:
 
 See the [API Documentation](http://rm-hull.github.io/monet).
 
-For more info on what the functions do look at the camel case versions 
-in JS docs (for example the 
+For more info on what the functions do look at the camel case versions
+in JS docs (for example the
 [mozilla developer network](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial?redirectlocale=en-US&redirectslug=Canvas_tutorial)).
 
-Some futher usage details can be found in 
+Some futher usage details can be found in
 [doc/GUIDE.md](https://github.com/rm-hull/monet/blob/master/doc/GUIDE.md)
 
 ## License
