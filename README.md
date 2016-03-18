@@ -1,4 +1,5 @@
-# monet [![Build Status](https://travis-ci.org/rm-hull/monet.svg?branch=master)](http://travis-ci.org/rm-hull/monet) [![Dependencies Status](https://jarkeeper.com/rm-hull/monet/status.svg)](https://jarkeeper.com/rm-hull/monet) [![Downloads](https://jarkeeper.com/rm-hull/monet/downloads.svg)](https://jarkeeper.com/rm-hull/monet)
+# monet [![Build Status](https://travis-ci.org/rm-hull/monet.svg?branch=master)](http://travis-ci.org/rm-hull/monet) [![Dependencies Status](https://jarkeeper.com/rm-hull/monet/status.svg)](https://jarkeeper.com/rm-hull/monet) [![Downloads](https://jarkeeper.com/rm-hull/monet/downloads.svg)](https://jarkeeper.com/rm-hull/monet) [![Clojars Project](https://img.shields.io/clojars/v/rm-hull/monet.svg)](https://clojars.org/rm-hull/monet)
+
 
 monet is a small ClojureScript library to make it easier (and
 performant) to work with canvas and visuals.
