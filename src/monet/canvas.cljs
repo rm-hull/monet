@@ -94,6 +94,12 @@
   (. ctx (clip))
   ctx)
 
+(defn rect
+  "Path for a rectangle at position (x, y) with a size (w, h)."
+  [ctx {:keys [x y w h]}]
+  (. ctx (rect x y w h))
+  ctx)
+
 (defn clear-rect
   "Sets all pixels in the rectangle defined by starting point (x, y)
    and size (w, h) to transparent black."
