@@ -6,6 +6,7 @@
     [org.clojure/clojurescript "1.8.51"]]
   :plugins [
     [codox "0.9.5"]
+    [lein-codox "0.9.5"]
     [lein-cljsbuild "1.1.3"]]
   :source-path "no-clj-here"
   :cljsbuild {
