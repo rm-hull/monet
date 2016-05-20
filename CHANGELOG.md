@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.3.0
+-----
+* Bump dependent versions (-> clojure 1.8 / clojurescript 1.8.51)
+* (Re-)Add `rect` method, via  https://github.com/rm-hull/monet/pull/14
+
 0.2.2
 -----
 * Bump dependent versions (-> clojurescript 1.7.122)
